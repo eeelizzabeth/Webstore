@@ -3,9 +3,8 @@
 //Basically all your actual code is here!
 package edu.csumb.Webstore.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+// import java.util.ArrayList;
+// import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +17,26 @@ import edu.csumb.Webstore.repositories.ProductRepository;
 public class ProductService
 {
     //We need to autowire the database here. If you are stuck, look at ProductController!
+    @Autowired
+    ProductRepository productRespository;
 
-    public Iterable<String> example()
+
+    public Iterable<Product> getAllProducts()
     {
-        List<String> sList = new ArrayList<>();
-        sList.add("Cameron is such a good TA, i'm going to give him 5 stars on every review!");
-        return sList;
+        return productRespository.findAll();
     }
+
+    public Product getProductByID(String id)
+    {
+        return productRespository.findById(id).get();
+    }
+
+    public void addProduct(Product p)
+    {
+        productRespository.insert(p);
+    }
+
+
+
 
 }

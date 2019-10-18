@@ -5,17 +5,16 @@
 
 package edu.csumb.Webstore.controller;
 
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import io.swagger.annotations.ApiOperation;
+
 import edu.csumb.Webstore.model.Product;
 import edu.csumb.Webstore.service.ProductService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 public class ProductController
@@ -35,14 +34,27 @@ public class ProductController
     //EXAMPLE()
     //We are returning an Iterable, which means a List! Use Iterable<Datatype> when you want to return many.
     //For example Iterable<Product>
-    @RequestMapping(method = RequestMethod.GET, value = "/products/example")
-    @ApiOperation(value = "An example of a api function to get you started." )
-    public Iterable<String> example()
+    @RequestMapping(method = RequestMethod.GET, value = "/products/getAll")
+    @ApiOperation(value = "Get all products from the database." )
+    public Iterable<Product> getAll()
     {
         //ALL LOGIC SHOULD BE IN THE SERVICE. EVEN IF IT'S JUST ONE LINE!
         //IF YOU HAVE ANY LOGIC IN THE CONTROLLER IT IS BAD!
         //So we are calling the service function we want.
-        return productService.example();
+        return productService.getAllProducts();
+    }
+    @RequestMapping(method = RequestMethod.GET, value = "/products/get/{id}")
+    @ApiOperation(value = "Get specific product from database by its ID.")
+    public Product get(@RequestParam String id)
+    {
+        return productService.getProductByID(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/products/add")
+    @ApiOperation(value = "Add a new product to the database.")
+    public void add(@RequestBody Product p)
+    {
+        productService.addProduct(p);
     }
 
     //NETWORKING QUICK REFERENCE
