@@ -11,10 +11,15 @@ public class User {
   private HashMap<String, Integer> proItems;
   //     (Product Id, number of items of that product)
 
-  public User(String username, String password, HashMap<String, Integer> numItems) {
+  public User(String username, String password) {
     this.username = username;
     this.password = password;
     this.proItems = new HashMap<String, Integer>();
+  }
+  public User(String username, String password, HashMap<String, Integer> numItems) {
+    this.username = username;
+    this.password = password;
+    this.proItems = numItems;
   }
 
   public String getUsername() {return this.username;}
