@@ -37,4 +37,8 @@ public class Product
     public void setPrice(Double price) {this.price = price; }
     public void setStock(Integer stock) {this.stock = stock; }
 
+    public void changeStock(int s) {
+      this.stock += s;
+    }
+
 }

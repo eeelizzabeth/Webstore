@@ -36,7 +36,9 @@ public class ProductService
         productRespository.insert(p);
     }
 
-
-
+    // public void updateProduct(Product p, Interger num)
+    // {
+    //     productRespository.
+    // }
 
 }
