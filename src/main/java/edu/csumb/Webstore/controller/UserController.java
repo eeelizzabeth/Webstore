@@ -32,12 +32,12 @@ public class UserController
         userService.addUser(u);
     }
 
-    // @RequestMapping(method = RequestMethod.POST, value="/auth/checkAuth")
-    // @ApiOperation(value = "Authenticate the username and password!")
-    // public Boolean checkAuth(@RequestBody User user)
-    // {
-    //     return userService.checkAuth(user.getUsername(), user.getPassword());
-    // }
+    @RequestMapping(method = RequestMethod.POST, value="/auth/checkAuth")
+    @ApiOperation(value = "Authenticate the username and password!")
+    public Boolean checkAuth(@RequestBody User user)
+    {
+        return userService.checkAuth(user.getUsername(), user.getPassword());
+    }
 
     // @RequestMapping(method = RequestMethod.POST, value = "/users/addProduct")
     // @ApiOperation(value = "Add to product and quantity to user cart!")
